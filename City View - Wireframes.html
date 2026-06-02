@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>City View Tourism — Wireframes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin:0; padding:0; }
+  body { font-family: 'Kalam', system-ui, sans-serif; color:#1d1d1d; }
+  /* ---- wireframe primitives ---- */
+  .wf  { background:#fdfcf8; color:#1d1d1d; box-sizing:border-box; }
+  .wf * { box-sizing:border-box; }
+  .stroke    { border:1.5px solid #1d1d1d; }
+  .stroke-2  { border:2px solid #1d1d1d; }
+  .dashed    { border:1.5px dashed #6b6b6b; }
+  .ink       { color:#1d1d1d; }
+  .muted     { color:#6b6b6b; }
+  .accent    { color:#2553e6; }
+  .accent-bg { background:#dde6ff; }
+  .teal      { color:#0fb8a8; }
+  .teal-bg   { background:#cdf3ef; }
+  .yel-bg    { background:#fff2a8; }
+  .pink-bg   { background:#ffd9e0; }
+  .pen       { font-family:'Caveat', cursive; font-weight:600; }
+  .scribble  { font-family:'Caveat', cursive; font-weight:500; color:#6b6b6b; }
+  .num       { font-family:'Kalam', cursive; font-weight:700; }
+  .pill      { border:1.5px solid #1d1d1d; border-radius:999px; padding:6px 14px; display:inline-flex; align-items:center; gap:6px; background:#fff; font-family:'Kalam'; font-weight:400; }
+  .pill.fill { background:#1d1d1d; color:#fff; }
+  .pill.accent-fill { background:#2553e6; color:#fff; border-color:#2553e6; }
+  .ph        { background:repeating-linear-gradient(135deg, #f4efe2 0 8px, #ece6d3 8px 16px); border:1.5px solid #1d1d1d; display:flex; align-items:center; justify-content:center; color:#6b6b6b; font-family:'Caveat'; font-size:18px; }
+  .ph.video::after { content:"▶"; position:absolute; }
+  .row { display:flex; }
+  .col { display:flex; flex-direction:column; }
+  .gap-2 { gap:8px; } .gap-3 { gap:12px; } .gap-4 { gap:16px; } .gap-6 { gap:24px; } .gap-8 { gap:32px; }
+  .p-3 { padding:12px; } .p-4 { padding:16px; } .p-5 { padding:20px; } .p-6 { padding:24px; } .p-8 { padding:32px; }
+  .grow { flex:1 1 auto; }
+  .center { display:flex; align-items:center; justify-content:center; }
+  .between { display:flex; align-items:center; justify-content:space-between; }
+  .underline-wave { text-decoration: underline wavy #2553e6; text-underline-offset: 4px; }
+  .scribble-mark { position:absolute; font-family:'Caveat'; color:#e84a4a; font-weight:600; }
+  .h-line { height:1.5px; background:#1d1d1d; }
+  /* nav bar shared across wireframes */
+  .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 28px; border-bottom:1.5px solid #1d1d1d; background:#fff; }
+  .navlogo { display:flex; align-items:center; gap:8px; font-family:'Caveat'; font-weight:700; font-size:22px; }
+  .navlogo .blob { width:26px; height:26px; border-radius:50%; background:#1d1d1d; }
+  .navitems { display:flex; gap:22px; font-family:'Kalam'; font-size:14px; color:#1d1d1d; }
+  .navcta { display:flex; gap:10px; align-items:center; }
+  .scribbleline { height:6px; background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6'><path d='M0 3 Q 5 0 10 3 T 20 3 T 30 3 T 40 3 T 50 3 T 60 3 T 70 3 T 80 3 T 90 3 T 100 3' fill='none' stroke='%231d1d1d' stroke-width='1.2'/></svg>") repeat-x; background-size:30px 6px; }
+  .arrow::after { content:"→"; margin-left:4px; }
+  .star { color:#e8b13a; }
+  .h1pen { font-family:'Caveat'; font-weight:700; font-size:54px; line-height:1; letter-spacing:-1px; }
+  .h2pen { font-family:'Caveat'; font-weight:700; font-size:38px; line-height:1.05; }
+  .h3pen { font-family:'Caveat'; font-weight:600; font-size:28px; line-height:1.1; }
+  .small { font-size:12px; color:#6b6b6b; font-family:'Kalam'; }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="wireframes.jsx"></script>
+</body>
+</html>
