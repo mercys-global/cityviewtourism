@@ -84,6 +84,7 @@ function NavMenu({ label, open, onOpen, onClose, children, width = 560 }) {
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(null); // 'packages' | 'destinations' | null
+  const [menuOpen, setMenuOpen] = useState(false); // mobile hamburger
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -95,6 +96,13 @@ function Nav() {
     { label: 'Group tours', to: 'destination/turkey' },
     { label: 'Blog',        to: 'guides' },
     { label: 'About',       to: 'about' },
+  ];
+
+  const mobileLinks = [
+    { label: 'Packages',     to: 'packages' },
+    { label: 'Destinations', to: 'destinations' },
+    ...simpleLinks,
+    { label: 'Sign in',      to: 'signin' },
   ];
 
   return (
@@ -157,9 +165,33 @@ function Nav() {
 
         <div className="row gap-3" style={{ alignItems: 'center', flex: '0 0 auto' }}>
           <a href="#/signin" onClick={(e) => { e.preventDefault(); go('signin'); }} className="hidden-mob" style={{ fontWeight: 600, fontSize: 14 }}>Sign in</a>
-          <button className="btn btn-primary btn-sm" onClick={() => go('quote')}><PlaneIcon size={16} /> Get a quote</button>
+          <button className="btn btn-primary btn-sm nav-cta" onClick={() => go('quote')}><PlaneIcon size={16} /> Get a quote</button>
+          <button className="nav-burger" aria-label="Menu" aria-expanded={menuOpen} onClick={() => setMenuOpen((o) => !o)}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              {menuOpen
+                ? <path d="M6 6 L18 18 M18 6 L6 18" />
+                : <g><path d="M3 6h18" /><path d="M3 12h18" /><path d="M3 18h18" /></g>}
+            </svg>
+          </button>
         </div>
       </div>
+
+      {menuOpen && (
+        <div className="nav-mobile-panel" style={{ borderTop: '1px solid var(--cv-line)', background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(14px)' }}>
+          <div className="container col" style={{ padding: '10px 20px 18px' }}>
+            <button className="btn btn-primary" onClick={() => { setMenuOpen(false); go('quote'); }} style={{ width: '100%', justifyContent: 'center', marginBottom: 8 }}>
+              <PlaneIcon size={16} /> Get a quote
+            </button>
+            {mobileLinks.map((it) => (
+              <a key={it.label} href={'#/' + it.to}
+                 onClick={(e) => { e.preventDefault(); setMenuOpen(false); go(it.to); }}
+                 style={{ padding: '13px 4px', fontSize: 16, fontWeight: 600, color: 'var(--cv-ink-2)', borderBottom: '1px solid var(--cv-line)' }}>
+                {it.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
